@@ -4,6 +4,10 @@
     <meta charset="UTF-8">
     <title>Random Drawing</title>
     <style type="text/css">
+        body{
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
         .entry-div{
             margin-right:1px;
             margin-bottom: 1px;
@@ -38,8 +42,10 @@
         .key-holder{
             float:none;
             clear:both;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            
         }
+
+ 
     </style>
   </head>
   <body>
@@ -47,29 +53,18 @@
         <div id="go-button-container" class="float-left"><button id='go'>Shuffle</button></div>
         <div id="pick-button-container" class="float-left"><button id="pick">Pick Random Entry</button></div> 
     </div>
-    <div id="key"></div>
+
     <div id="entry-container"></div>
+    <div id="key"></div>
 
    
 
 
 
   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js" type="text/javascript"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js" type="text/javascript"></script>
   <script type="text/javascript">
-    var entries = {
-        'A': {
-            'entries': 1000,
-            'color': getRandomColor()
-        },
-        'B': {
-            'entries': 2000,
-            'color': getRandomColor()
-        },
-        'C': {
-            'entries':1500,
-            'color': getRandomColor()
-        }
-    }    
+    
     
     var picked = [];
 
@@ -108,24 +103,63 @@
         });                    
     }
 
+
+    function randomFlash(index){
+        if (index < 10) { 
+            var len = $(".entry-div").length;
+            var random = Math.floor( Math.random() * len ) + 1;
+            $div = $(".entry-div").eq(random);
+
+            $div.effect( "pulsate", {times:5}, 25, function(){
+                randomFlash(index+1);
+            });
+        }else{
+            pickRandom();
+        }
+    }
+
     function pickRandom(){
         console.log("Picking...");
         var len = $(".entry-div").length;
         console.log("Num Divs: " + len);
-        
-        for( var i = 0; i<2; i++){
+
+        for( var i = 1; i<3; i++){
             var random = Math.floor( Math.random() * len ) + 1;
             console.log("Picked Element: " + random);
-            $(".entry-div").eq(random).css("background-color", "red");
+            $div = $(".entry-div").eq(random);
+            $div.effect( "pulsate", {times:10}, 5000 , function(){
+                $(this).css("background-color", "white").css("border-color", "red");
+
+            });
+            $("#control-container").append("Pick " + i + ": <strong>" + $div.attr("title") + "</strong>&nbsp;&nbsp;&nbsp;&nbsp;");
         }
 
     }
 
+    function kickOff(){
+        randomFlash(0);
+    }
+
+    var entries = {
+        'A': {
+            'entries': 1000,
+            'color': getRandomColor()
+        },
+        'B': {
+            'entries': 2000,
+            'color': getRandomColor()
+        },
+        'C': {
+            'entries':1500,
+            'color': getRandomColor()
+        }
+    }   
 
     
   
      $("#go").bind("click", shuffle);
-     $("#pick").bind("click", pickRandom);
+     $("#pick").bind("click", kickOff);
+     var total_entries = 0;
     
     $.each(entries, function (key, value){
         $("#key").append("<div class='key-holder'><div class='key-entry-div' style='background-color:" + value.color + "'></div>" + key + "</div>");
@@ -133,7 +167,12 @@
         for(i = 0; i < value.entries; i++){
             $("#entry-container").append("<div class='entry-div' style='background-color:" + value.color + "' title='" + key + "'></div>");
         }
+
+        total_entries += value.entries;
+        
     });
+
+    $("#control-container").append("Total Entries: " + total_entries + "&nbsp;&nbsp;&nbsp;&nbsp;");
 
 
     

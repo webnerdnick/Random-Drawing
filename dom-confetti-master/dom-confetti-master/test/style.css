@@ -1,0 +1,17 @@
+#root {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+#container {
+  width: 0px;
+  height: 0px;
+  position: relative;
+  perspective: 1000px;
+}
+
+form > * {
+  display: block;
+}
