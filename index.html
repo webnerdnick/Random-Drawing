@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta charset="UTF-8">
-    <title>title</title>
+    <title>Random Drawing</title>
     <style type="text/css">
         .entry-div{
             margin-right:1px;
@@ -18,7 +18,8 @@
   <div id="entry-container"></div>
 
 
-   <div id="go-button-container"><button id='go'>Shuffle</button></div> 
+   <div id="go-button-container"><button id='go'>Shuffle</button></div>
+   <div id="pick-button-container"><button id="pick">Pick Random Entry</button></div> 
 
 
 
@@ -34,7 +35,7 @@
     }
 
     function shuffle(){
-        console.log("Shuffling");
+        console.log("Shuffling...");
         $("#entry-container").each(function(){
             var divs = $(this).find('div');
             for(var i = 0; i < divs.length; i++) $(divs[i]).remove();            
@@ -51,6 +52,19 @@
         });                    
     }
 
+    function pickRandom(){
+        console.log("Picking...");
+        var len = $(".entry-div").length;
+        console.log("Num Divs: " + len);
+        
+        for( var i = 0; i<2; i++){
+            var random = Math.floor( Math.random() * len ) + 1;
+            console.log("Picked Element: " + random);
+            $(".entry-div").eq(random).css("background-color", "red");
+        }
+
+    }
+
 
     var entries = {
         'A': {
@@ -63,10 +77,8 @@
         }
     }
   
-    var row = 0;
-    var col = 0;
-
-    $("#go").bind("click", shuffle);
+     $("#go").bind("click", shuffle);
+     $("#pick").bind("click", pickRandom);
     
     $.each(entries, function (key, value){
         for(i = 0; i < value.entries; i++){
