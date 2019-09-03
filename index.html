@@ -64,7 +64,7 @@
 
   <script type="text/javascript">
     
-    var picked = [];
+    
 
     var colors = ['#00FF00','#D2B48C','#FF00FF','#C71585','#D2691E','#483D8B','#00BFFF',
     '#E0FFFF','#008B8B','#B0C4DE','#FFA07A','#B8860B','#FAFAD2','#9932CC','#F08080','#98FB98','#696969','#CD5C5C','#FF1493','#ADD8E6','#DEB887',
@@ -119,21 +119,26 @@
     function pickRandom(){
         console.log("Picking...");
         var len = $(".entry-div").length;
-        console.log("Num Divs: " + len);
+        num_picked = 0;
+        var picked = "";
 
-        for( var i = 1; i<3; i++){
+        do{
             var random = Math.floor( Math.random() * len ) + 1;
-            console.log("Picked Element: " + random);
+            
             $div = $(".entry-div").eq(random);
-            $div.effect( "pulsate", {times:10}, 5000 , function(){
-                $(this).css("background-color", "white").css("border-color", "red");
+            console.log("Picked: " + $div.attr("title"));
+            if(picked != $div.attr("title")){
+                $div.effect( "pulsate", {times:10}, 5000 , function(){
+                    $(this).css("background-color", "white").css("border-color", "red");
 
-            });
-            $("#control-container").append("Pick " + i + ": <strong>" + $div.attr("title") + "</strong>&nbsp;&nbsp;&nbsp;&nbsp;");
-        }
+                });
+                $("#control-container").append("Pick " + i + ": <strong>" + $div.attr("title") + "</strong>&nbsp;&nbsp;&nbsp;&nbsp;");
+                picked = $div.attr("title");
+                num_picked++;
+            }
+        }while (num_picked < 2);
 
         confetti.start();
-
 
     }
 
