@@ -1,14 +1,14 @@
 var entries = {
     'A': {
-        'entries': 1000,
+        'entries': 5000,
         'color': getRandomColor()
     },
     'B': {
-        'entries': 2000,
+        'entries': 4200,
         'color': getRandomColor()
     },
     'C': {
-        'entries':1500,
+        'entries':600,
         'color': getRandomColor()
     }
 }
