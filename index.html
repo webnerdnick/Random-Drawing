@@ -30,7 +30,7 @@
             left:0px;
             top: 0px;
             width: 100%;
-            height: 25px;
+            height: 40px;
             float:none;
             clear:both;
         }
@@ -43,6 +43,14 @@
             float:none;
             clear:both;
             
+        }
+
+        .selected{
+            width:15px;
+            height:15px;
+            border:4px solid #FFFFFF;
+            position:absolute;
+            z-index:10000;
         }
 
  
@@ -128,17 +136,24 @@
             $div = $(".entry-div").eq(random);
             console.log("Picked: " + $div.attr("title"));
             if(picked != $div.attr("title")){
+                var position = $div.position();
+                    console.log(position.top + "," + position.left);
+                    $div.css("top",position.top).css("left",position.left);
+                    console.log($div);
+                    $div.addClass("selected");
+                    $div.removeClass("entry-div");
                 $div.effect( "pulsate", {times:10}, 5000 , function(){
-                    $(this).css("background-color", "white").css("border-color", "red");
+                    
 
                 });
-                $("#control-container").append("Pick " + i + ": <strong>" + $div.attr("title") + "</strong>&nbsp;&nbsp;&nbsp;&nbsp;");
-                picked = $div.attr("title");
                 num_picked++;
+                $("#control-container").append("Pick " + num_picked + ": <strong>" + $div.attr("title") + "</strong>&nbsp;&nbsp;&nbsp;&nbsp;");
+                picked = $div.attr("title");
+                
             }
         }while (num_picked < 2);
 
-        confetti.start();
+       // confetti.start();
 
     }
 
