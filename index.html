@@ -171,7 +171,7 @@
      var total_entries = 0;
     
     $.each(entries, function (key, value){
-        $("#key").append("<div class='key-holder'><div class='key-entry-div' style='background-color:" + value.color + "'></div>" + key + "</div>");
+        $("#key").append("<div class='key-holder'><div class='key-entry-div' style='background-color:" + value.color + "'></div>" + key + " (" + value.entries + ")</div>");
 
         for(i = 0; i < value.entries; i++){
             $("#entry-container").append("<div class='entry-div' style='background-color:" + value.color + "' title='" + key + "'></div>");
