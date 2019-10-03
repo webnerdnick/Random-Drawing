@@ -7,16 +7,12 @@ var entries = {
         'entries': 2550,
         'color': getRandomColor()
     },
-    'Lilian': {
+    'Lillian': {
         'entries':1700,
         'color': getRandomColor()
     },
     'Lauren': {
         'entries':800,
-        'color': getRandomColor()
-    },
-    'Hunter': {
-        'entries':2150,
         'color': getRandomColor()
     },
     'Josh': {
@@ -31,15 +27,7 @@ var entries = {
         'entries':1100,
         'color': getRandomColor()
     },
-    'Tanner': {
-        'entries':1200,
-        'color': getRandomColor()
-    },
-    'Daisy': {
-        'entries':2600,
-        'color': getRandomColor()
-    },
-    'Kaylynn': {
+    'Caylynn': {
         'entries':200,
         'color': getRandomColor()
     }
