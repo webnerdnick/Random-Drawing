@@ -1,34 +1,50 @@
 var entries = {
     'Ryan': {
-        'entries': 1600,
+        'entries': 2850,
         'color': getRandomColor()
     },
     'Jonathan': {
-        'entries': 2550,
-        'color': getRandomColor()
-    },
-    'Lillian': {
-        'entries':1700,
+        'entries': 3100,
         'color': getRandomColor()
     },
     'Lauren': {
-        'entries':800,
+        'entries':1750,
         'color': getRandomColor()
     },
-    'Josh': {
-        'entries':2000,
+    'Abigale': {
+        'entries':3250,
         'color': getRandomColor()
     },
-    'Matt': {
-        'entries':1500,
+    'Chelsea': {
+        'entries':3550,
         'color': getRandomColor()
     },
-    'Chandler': {
+    'Savanah': {
+        'entries':3000,
+        'color': getRandomColor()
+    },
+    'Trenton': {
         'entries':1100,
         'color': getRandomColor()
     },
-    'Caylynn': {
-        'entries':200,
+    'Camden': {
+        'entries':2300,
+        'color': getRandomColor()
+    },
+    'Hunter': {
+        'entries':1200,
+        'color': getRandomColor()
+    },
+    'Desiree': {
+        'entries':1800,
+        'color': getRandomColor()
+    },
+    'Collin': {
+        'entries':3200,
+        'color': getRandomColor()
+    },
+    'Tristan': {
+        'entries':800,
         'color': getRandomColor()
     }
 }
